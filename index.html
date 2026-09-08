@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shivyog Electronics | AI Assistant</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#4f46e5;
+    --primary2:#7c3aed;
+    --blue:#0ea5e9;
+    --bg:#f6f8fc;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --border:#e5e7eb;
+}
+
+body{
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(79,70,229,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(14,165,233,.10),
+            transparent 30%
+        ),
+        var(--bg);
+
+    min-height:100vh;
+    color:var(--text);
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    width:100%;
+    min-height:100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    background:rgba(255,255,255,.88);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+}
+
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+
+.logo{
+
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--blue)
+        );
+
+    color:white;
+
+    box-shadow:
+        0 8px 25px
+        rgba(79,70,229,.25);
+}
+
+
+.brand-text h1{
+
+    font-size:18px;
+    font-weight:800;
+
+}
+
+
+.brand-text p{
+
+    font-size:11px;
+    color:var(--muted);
+
+    margin-top:2px;
+
+}
+
+
+.status{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 13px;
+
+    background:#ecfdf5;
+
+    color:#15803d;
+
+    border-radius:50px;
+
+    font-size:12px;
+    font-weight:700;
+
+}
+
+
+.status-dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(34,197,94,.12);
+
+}
+
+
+.status.offline{
+
+    background:#fef2f2;
+    color:#dc2626;
+
+}
+
+
+.status.offline .status-dot{
+
+    background:#ef4444;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:22px;
+
+    display:grid;
+
+    grid-template-columns:
+        290px
+        minmax(0,1fr);
+
+    gap:20px;
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+
+    background:rgba(255,255,255,.86);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:18px;
+
+    height:max-content;
+
+    box-shadow:
+        0 15px 45px
+        rgba(15,23,42,.06);
+
+}
+
+
+.shop-card{
+
+    padding:18px;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #eff6ff
+        );
+
+    margin-bottom:20px;
+
+}
+
+
+.shop-icon{
+
+    font-size:30px;
+
+    margin-bottom:9px;
+
+}
+
+
+.shop-card h2{
+
+    font-size:17px;
+
+    line-height:1.3;
+
+}
+
+
+.shop-card p{
+
+    margin-top:7px;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    color:var(--muted);
+
+}
+
+
+.rating{
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+
+.side-title{
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.1em;
+
+    color:#94a3b8;
+
+    text-transform:uppercase;
+
+    margin-bottom:9px;
+
+}
+
+
+.category{
+
+    width:100%;
+
+    border:none;
+
+    background:transparent;
+
+    padding:11px 12px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    color:#334155;
+
+    font-size:12px;
+
+    transition:.2s;
+
+}
+
+
+.category:hover{
+
+    background:#eef2ff;
+
+    color:#4338ca;
+
+    transform:translateX(3px);
+
+}
+
+
+.category-icon{
+
+    width:29px;
+    height:29px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:#f1f5f9;
+
+}
+
+
+.shop-info{
+
+    border-top:1px solid var(--border);
+
+    margin-top:17px;
+
+    padding-top:17px;
+
+}
+
+
+.info-row{
+
+    display:flex;
+
+    gap:9px;
+
+    margin-bottom:11px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    line-height:1.5;
+
+}
+
+
+/* =====================================================
+   CHAT CARD
+===================================================== */
+
+.chat{
+
+    min-height:
+        calc(100vh - 116px);
+
+    background:
+        rgba(255,255,255,.90);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+        0 18px 60px
+        rgba(15,23,42,.07);
+
+}
+
+
+/* =====================================================
+   CHAT HEADER
+===================================================== */
+
+.chat-header{
+
+    min-height:70px;
+
+    padding:14px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.ai-title{
+
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+}
+
+
+.ai-avatar{
+
+    width:40px;
+    height:40px;
+
+    border-radius:13px;
+
+    background:#eef2ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+}
+
+
+.ai-title strong{
+
+    display:block;
+
+    font-size:14px;
+
+}
+
+
+.ai-title span{
+
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:10px;
+
+    margin-top:3px;
+
+}
+
+
+.header-actions{
+
+    display:flex;
+    gap:7px;
+
+}
+
+
+.action-btn{
+
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    padding:8px 11px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    color:#64748b;
+
+    transition:.2s;
+
+}
+
+
+.action-btn:hover{
+
+    background:#f8fafc;
+
+    color:#4f46e5;
+
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:28px;
+
+    scroll-behavior:smooth;
+
+}
+
+
+.messages::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+
+.messages::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:10px;
+
+}
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
+
+.welcome{
+
+    max-width:750px;
+
+    margin:45px auto 25px;
+
+    text-align:center;
+
+}
+
+
+.welcome-logo{
+
+    width:70px;
+    height:70px;
+
+    margin:auto;
+
+    border-radius:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #0ea5e9
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 18px 35px
+        rgba(79,70,229,.20);
+
+}
+
+
+.welcome h2{
+
+    margin-top:19px;
+
+    font-size:29px;
+
+    font-weight:800;
+
+}
+
+
+.welcome p{
+
+    margin-top:9px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+.suggestions{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:9px;
+
+}
+
+
+.suggestion{
+
+    border:1px solid #dbeafe;
+
+    background:#fff;
+
+    padding:10px 14px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    color:#334155;
+
+    transition:.2s;
+
+}
+
+
+.suggestion:hover{
+
+    background:#eef2ff;
+
+    border-color:#818cf8;
+
+    color:#4338ca;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+    animation:
+        messageIn
+        .25s
+        ease;
+
+}
+
+
+@keyframes messageIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(7px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.message.user{
+
+    justify-content:flex-end;
+
+}
+
+
+.avatar{
+
+    width:35px;
+    height:35px;
+
+    min-width:35px;
+
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#eef2ff;
+
+    font-size:16px;
+
+}
+
+
+.user .avatar{
+
+    order:2;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #6366f1
+        );
+
+    color:#fff;
+
+}
+
+
+.bubble{
+
+    max-width:
+        min(78%,720px);
+
+    padding:12px 15px;
+
+    border-radius:17px;
+
+    background:#f8fafc;
+
+    border:1px solid var(--border);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    color:#1e293b;
+
+    word-break:break-word;
+
+}
+
+
+.user .bubble{
+
+    color:#fff;
+
+    border:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #6366f1
+        );
+
+    border-bottom-right-radius:5px;
+
+}
+
+
+.bot .bubble{
+
+    border-bottom-left-radius:5px;
+
+}
+
+
+.bubble strong{
+
+    font-weight:800;
+
+}
+
+
+.source-box{
+
+    margin-top:9px;
+
+    padding:8px 10px;
+
+    background:#eef2f7;
+
+    border-radius:9px;
+
+    font-size:9px;
+
+    color:#64748b;
+
+}
+
+
+.distances{
+
+    margin-top:5px;
+
+    font-size:9px;
+
+    color:#94a3b8;
+
+}
+
+
+/* =====================================================
+   TYPING
+===================================================== */
+
+.typing{
+
+    display:flex;
+
+    gap:5px;
+
+    align-items:center;
+
+    height:20px;
+
+}
+
+
+.typing span{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#94a3b8;
+
+    animation:
+        typing
+        1.2s
+        infinite;
+
+}
+
+
+.typing span:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+
+.typing span:nth-child(3){
+
+    animation-delay:.30s;
+
+}
+
+
+@keyframes typing{
+
+    0%,60%,100%{
+
+        transform:
+            translateY(0);
+
+        opacity:.5;
+
+    }
+
+    30%{
+
+        transform:
+            translateY(-5px);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-area{
+
+    padding:15px 18px 17px;
+
+    border-top:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.94);
+
+}
+
+
+.input-box{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:9px;
+
+    background:#f8fafc;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:17px;
+
+    padding:6px 7px 6px 15px;
+
+    transition:.2s;
+
+}
+
+
+.input-box:focus-within{
+
+    background:#fff;
+
+    border-color:#6366f1;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(99,102,241,.09);
+
+}
+
+
+#question{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    resize:none;
+
+    min-height:42px;
+
+    max-height:130px;
+
+    padding:11px 0;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+
+#question::placeholder{
+
+    color:#94a3b8;
+
+}
+
+
+.send{
+
+    width:43px;
+    height:43px;
+
+    border:none;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #0ea5e9
+        );
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.send:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 8px 22px
+        rgba(79,70,229,.25);
+
+}
+
+
+.send:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+
+.hint{
+
+    text-align:center;
+
+    margin-top:7px;
+
+    color:#94a3b8;
+
+    font-size:9px;
+
+}
+
+
+/* =====================================================
+   QUICK BAR
+===================================================== */
+
+.quick-bar{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    margin-bottom:9px;
+
+}
+
+
+.quick-bar::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.quick{
+
+    white-space:nowrap;
+
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    padding:7px 10px;
+
+    border-radius:9px;
+
+    font-size:9px;
+
+    color:#64748b;
+
+    cursor:pointer;
+
+}
+
+
+.quick:hover{
+
+    color:#4f46e5;
+
+    border-color:#c7d2fe;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+    .main{
+
+        grid-template-columns:1fr;
+
+        padding:10px;
+
+    }
+
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+
+    .chat{
+
+        min-height:
+            calc(100vh - 92px);
+
+        border-radius:20px;
+
+    }
+
+
+    .header{
+
+        padding:
+            0 14px;
+
+    }
+
+
+    .brand-text h1{
+
+        font-size:15px;
+
+    }
+
+
+    .brand-text p{
+
+        font-size:9px;
+
+    }
+
+
+    .status{
+
+        padding:
+            7px 9px;
+
+        font-size:9px;
+
+    }
+
+
+    .messages{
+
+        padding:18px 14px;
+
+    }
+
+
+    .welcome{
+
+        margin:
+            25px auto;
+
+    }
+
+
+    .welcome h2{
+
+        font-size:23px;
+
+    }
+
+
+    .welcome p{
+
+        font-size:12px;
+
+    }
+
+
+    .bubble{
+
+        max-width:86%;
+
+        font-size:12px;
+
+    }
+
+
+    .chat-header{
+
+        padding:
+            12px 14px;
+
+    }
+
+
+    .header-actions .action-btn{
+
+        font-size:0;
+
+        width:34px;
+
+        height:34px;
+
+        padding:0;
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .ai-title span{
+
+        display:none;
+
+    }
+
+
+    .suggestion{
+
+        font-size:10px;
+
+        padding:
+            9px 11px;
+
+    }
+
+
+    .welcome-logo{
+
+        width:60px;
+        height:60px;
+
+        font-size:29px;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo">
+            ⚡
+        </div>
+
+        <div class="brand-text">
+
+            <h1>
+                Shivyog Electronics
+            </h1>
+
+            <p>
+                AI-Powered Shop Assistant
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="status"
+        id="status"
+    >
+
+        <span class="status-dot"></span>
+
+        <span id="statusText">
+            Connecting...
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="shop-card">
+
+        <div class="shop-icon">
+            ⚡
+        </div>
+
+        <h2>
+            Shivyog Electrical
+            and Electronics
+        </h2>
+
+        <p>
+            Electrical supply store
+            <br>
+            Basmat, Maharashtra
+        </p>
+
+        <div class="rating">
+            ⭐ 5.0 · 33 Google Reviews
+        </div>
+
+    </div>
+
+
+    <div class="side-title">
+        Explore Products
+    </div>
+
+
+    <button
+        class="category"
+        onclick="ask('LED lights available ahet ka?')"
+    >
+
+        <span class="category-icon">
+            💡
+        </span>
+
+        LED Lights
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('Electrical wires ani cables available ahet ka?')"
+    >
+
+        <span class="category-icon">
+            🔌
+        </span>
+
+        Wires & Cables
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('MCB ani RCCB available ahet ka?')"
+    >
+
+        <span class="category-icon">
+            ⚡
+        </span>
+
+        MCB / RCCB
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('Inverter ani battery available ahe ka?')"
+    >
+
+        <span class="category-icon">
+            🔋
+        </span>
+
+        Inverter / Battery
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('Fan available ahe ka?')"
+    >
+
+        <span class="category-icon">
+            🌀
+        </span>
+
+        Fans
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('TV remote available ahe ka?')"
+    >
+
+        <span class="category-icon">
+            📺
+        </span>
+
+        TV Accessories
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('DTH accessories available ahet ka?')"
+    >
+
+        <span class="category-icon">
+            📡
+        </span>
+
+        DTH Accessories
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="ask('Decorative lights available ahet ka?')"
+    >
+
+        <span class="category-icon">
+            ✨
+        </span>
+
+        Decorative Lights
+
+    </button>
+
+
+    <div class="shop-info">
+
+        <div class="side-title">
+            Shop Information
+        </div>
+
+
+        <div class="info-row">
+            📍
+            <span>
+                Shop No 5, Mama Chowk,
+                Main Road, Khajipura,
+                Basmat, Maharashtra
+            </span>
+        </div>
+
+
+        <div class="info-row">
+            🕘
+            <span>
+                Monday – Sunday
+                <br>
+                9:00 AM – 9:00 PM
+            </span>
+        </div>
+
+
+        <div class="info-row">
+            📞
+            <span>
+                095528 84781
+            </span>
+        </div>
+
+
+        <div class="info-row">
+            🏠
+            <span>
+                Home Service Available
+            </span>
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     CHAT
+===================================================== -->
+
+<section class="chat">
+
+
+    <div class="chat-header">
+
+
+        <div class="ai-title">
+
+            <div class="ai-avatar">
+                🤖
+            </div>
+
+            <div>
+
+                <strong>
+                    Shivyog AI Assistant
+                </strong>
+
+                <span>
+                    Products · Services · Pricing · Shop Information
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                class="action-btn"
+                onclick="checkStatus()"
+                title="Check backend"
+            >
+                🔄
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="clearChat()"
+                title="Clear chat"
+            >
+                🗑
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MESSAGES
+    ================================================= -->
+
+    <div
+        class="messages"
+        id="messages"
+    >
+
+
+        <div
+            class="welcome"
+            id="welcome"
+        >
+
+            <div class="welcome-logo">
+                ⚡
+            </div>
+
+
+            <h2>
+                How can I help you?
+            </h2>
+
+
+            <p>
+
+                Ask anything about
+                <b>Shivyog Electronics</b>.
+
+                <br>
+
+                Marathi, Hindi, English
+                किंवा mixed language मध्ये
+                प्रश्न विचारू शकता.
+
+            </p>
+
+
+            <div class="suggestions">
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('shop cha timing kay ahe?')"
+                >
+                    🕘 Shop Timing
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('LED bulb available ahe ka?')"
+                >
+                    💡 LED Bulb
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('mobile charger cha price kay ahe?')"
+                >
+                    📱 Mobile Charger
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('home service available ahe ka?')"
+                >
+                    🏠 Home Service
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('wiring service karta ka?')"
+                >
+                    🔌 Wiring
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('DTH service available ahe ka?')"
+                >
+                    📡 DTH Service
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('inverter battery available ahe ka?')"
+                >
+                    🔋 Inverter
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    onclick="ask('decorative lights available ahet ka?')"
+                >
+                    ✨ Decoration
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         INPUT
+    ================================================= -->
+
+    <div class="input-area">
+
+
+        <div class="quick-bar">
+
+            <button
+                class="quick"
+                onclick="ask('What products are available?')"
+            >
+                🛍 Products
+            </button>
+
+            <button
+                class="quick"
+                onclick="ask('What services do you provide?')"
+            >
+                🛠 Services
+            </button>
+
+            <button
+                class="quick"
+                onclick="ask('shop location kay ahe?')"
+            >
+                📍 Location
+            </button>
+
+            <button
+                class="quick"
+                onclick="ask('shop cha timing kay ahe?')"
+            >
+                🕘 Timing
+            </button>
+
+        </div>
+
+
+        <div class="input-box">
+
+            <textarea
+                id="question"
+                rows="1"
+                placeholder="Ask anything... e.g. LED bulb cha price kay ahe?"
+            ></textarea>
+
+
+            <button
+                class="send"
+                id="sendBtn"
+                onclick="sendMessage()"
+            >
+                ➤
+            </button>
+
+        </div>
+
+
+        <div class="hint">
+
+            Enter to send · Shift + Enter for new line
+
+        </div>
+
+    </div>
+
+
+</section>
+
+</main>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   API CONFIGURATION
+===================================================== */
+
+/*
+   IMPORTANT:
+
+   index.html FastAPI backend मधून serve होत असेल,
+   API_URL खाली empty ठेवायचा.
+
+   त्यामुळे:
+   /chat
+   /status
+
+   direct same server वर जातील.
+
+   त्यामुळे CORS problem येणार नाही.
+*/
+
+const API_URL = "";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const messages =
+    document.getElementById("messages");
+
+const questionInput =
+    document.getElementById("question");
+
+const sendButton =
+    document.getElementById("sendBtn");
+
+const statusElement =
+    document.getElementById("status");
+
+const statusText =
+    document.getElementById("statusText");
+
+
+let loading = false;
+
+
+
+/* =====================================================
+   ASK QUESTION
+===================================================== */
+
+function ask(text){
+
+    questionInput.value = text;
+
+    sendMessage();
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =====================================================
+   FORMAT AI RESPONSE
+===================================================== */
+
+function formatText(text){
+
+    let result =
+        escapeHtml(text);
+
+    result =
+        result.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+    result =
+        result.replace(
+            /\n/g,
+            "<br>"
+        );
+
+    return result;
+
+}
+
+
+
+/* =====================================================
+   ADD MESSAGE
+===================================================== */
+
+function addMessage(
+    text,
+    type,
+    sources = [],
+    distances = []
+){
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        `message ${type}`;
+
+
+    const avatar =
+        document.createElement("div");
+
+    avatar.className =
+        "avatar";
+
+    avatar.textContent =
+        type === "user"
+            ? "👤"
+            : "🤖";
+
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "bubble";
+
+
+    bubble.innerHTML =
+        formatText(text);
+
+
+    if(
+        type === "bot" &&
+        sources &&
+        sources.length
+    ){
+
+        const sourceBox =
+            document.createElement("div");
+
+        sourceBox.className =
+            "source-box";
+
+        sourceBox.innerHTML =
+            `📚 ${sources.length}
+             knowledge source${sources.length > 1 ? "s" : ""}
+             used`;
+
+        bubble.appendChild(sourceBox);
+
+
+        /*
+           Show retrieval distance
+           only for debugging.
+        */
+
+        if(
+            distances &&
+            distances.length
+        ){
+
+            const distance =
+                document.createElement("div");
+
+            distance.className =
+                "distances";
+
+            distance.innerHTML =
+                `RAG retrieval: ${distances
+                    .map(d => Number(d).toFixed(3))
+                    .join(", ")}`;
+
+            bubble.appendChild(distance);
+
+        }
+
+    }
+
+
+    message.appendChild(avatar);
+
+    message.appendChild(bubble);
+
+
+    messages.appendChild(message);
+
+
+    scrollBottom();
+
+}
+
+
+
+/* =====================================================
+   TYPING INDICATOR
+===================================================== */
+
+function showTyping(){
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message bot";
+
+    message.id =
+        "typingMessage";
+
+
+    message.innerHTML = `
+
+        <div class="avatar">
+            🤖
+        </div>
+
+        <div class="bubble">
+
+            <div class="typing">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    messages.appendChild(message);
+
+    scrollBottom();
+
+}
+
+
+
+function removeTyping(){
+
+    const element =
+        document.getElementById(
+            "typingMessage"
+        );
+
+    if(element){
+
+        element.remove();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
+async function sendMessage(){
+
+    if(loading){
+
+        return;
+
+    }
+
+
+    const text =
+        questionInput.value.trim();
+
+
+    if(!text){
+
+        return;
+
+    }
+
+
+    /*
+       Remove welcome screen
+    */
+
+    const welcome =
+        document.getElementById("welcome");
+
+    if(welcome){
+
+        welcome.remove();
+
+    }
+
+
+    /*
+       Add customer message
+    */
+
+    addMessage(
+        text,
+        "user"
+    );
+
+
+    /*
+       Clear input
+    */
+
+    questionInput.value = "";
+
+    questionInput.style.height =
+        "auto";
+
+
+    loading = true;
+
+    sendButton.disabled =
+        true;
+
+
+    showTyping();
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/chat`,
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+                        question:text
+                    })
+                }
+            );
+
+
+        /*
+           HTTP error
+        */
+
+        if(!response.ok){
+
+            let errorMessage =
+                `Server error: ${response.status}`;
+
+            try{
+
+                const errorData =
+                    await response.json();
+
+                if(errorData.detail){
+
+                    errorMessage =
+                        errorData.detail;
+
+                }
+
+            }catch(e){}
+
+
+            throw new Error(
+                errorMessage
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        removeTyping();
+
+
+        /*
+           Backend response
+        */
+
+        const answer =
+            data.answer ||
+            "Sorry, answer generate झाला नाही.";
+
+
+        addMessage(
+            answer,
+            "bot",
+            data.sources || [],
+            data.distances || []
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "CHAT ERROR:",
+            error
+        );
+
+
+        removeTyping();
+
+
+        addMessage(
+            `⚠️ Sorry, backend connection मध्ये problem आहे.
+
+${error.message}
+
+कृपया FastAPI server चालू आहे का check करा.`,
+            "bot"
+        );
+
+    }
+
+
+    loading = false;
+
+    sendButton.disabled =
+        false;
+
+    questionInput.focus();
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+questionInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   AUTO RESIZE
+===================================================== */
+
+questionInput.addEventListener(
+    "input",
+    function(){
+
+        this.style.height =
+            "auto";
+
+        this.style.height =
+            Math.min(
+                this.scrollHeight,
+                130
+            ) + "px";
+
+    }
+);
+
+
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+function scrollBottom(){
+
+    setTimeout(
+        function(){
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        },
+        50
+    );
+
+}
+
+
+
+/* =====================================================
+   CLEAR CHAT
+===================================================== */
+
+function clearChat(){
+
+    messages.innerHTML = `
+
+        <div
+            class="welcome"
+            id="welcome"
+        >
+
+            <div class="welcome-logo">
+                ⚡
+            </div>
+
+            <h2>
+                How can I help you?
+            </h2>
+
+            <p>
+                Ask anything about
+                <b>Shivyog Electronics</b>.
+
+                <br>
+
+                Marathi, Hindi, English
+                किंवा mixed language मध्ये
+                प्रश्न विचारू शकता.
+            </p>
+
+
+            <div class="suggestions">
+
+                <button
+                    class="suggestion"
+                    onclick="ask('shop cha timing kay ahe?')"
+                >
+                    🕘 Shop Timing
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('LED bulb available ahe ka?')"
+                >
+                    💡 LED Bulb
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('mobile charger cha price kay ahe?')"
+                >
+                    📱 Mobile Charger
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('home service available ahe ka?')"
+                >
+                    🏠 Home Service
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('wiring service karta ka?')"
+                >
+                    🔌 Wiring
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('DTH service available ahe ka?')"
+                >
+                    📡 DTH Service
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('inverter battery available ahe ka?')"
+                >
+                    🔋 Inverter
+                </button>
+
+                <button
+                    class="suggestion"
+                    onclick="ask('decorative lights available ahet ka?')"
+                >
+                    ✨ Decoration
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    questionInput.focus();
+
+}
+
+
+
+/* =====================================================
+   BACKEND STATUS
+===================================================== */
+
+async function checkStatus(){
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/status`,
+                {
+                    method:"GET"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Backend unavailable"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        statusElement.classList.remove(
+            "offline"
+        );
+
+
+        statusText.textContent =
+            "AI Online";
+
+
+        console.log(
+            "Backend Status:",
+            data
+        );
+
+
+    }catch(error){
+
+        statusElement.classList.add(
+            "offline"
+        );
+
+
+        statusText.textContent =
+            "Offline";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   INITIAL STATUS CHECK
+===================================================== */
+
+checkStatus();
+
+
+
+/* =====================================================
+   CONSOLE INFO
+===================================================== */
+
+console.log(
+    "⚡ Shivyog Electronics AI Assistant"
+);
+
+console.log(
+    "Backend:",
+    API_URL || "Same Origin"
+);
+
+</script>
+
+</body>
+</html>
