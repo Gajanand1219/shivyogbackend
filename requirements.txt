@@ -5,3 +5,4 @@ groq
 faiss-cpu
 numpy
 google-genai
+gunicorn
