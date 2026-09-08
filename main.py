@@ -512,7 +512,7 @@ def home():
 # DATABASE STATUS
 # =========================================================
 
-@app.get("/status")
+@app.api_route("/status", methods=["GET", "HEAD"])
 def status():
 
     return {
